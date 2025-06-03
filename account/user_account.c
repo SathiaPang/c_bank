@@ -73,7 +73,6 @@ void user_update_account(void) {
             printf("\nSuccess! Your account has been updated.\n");
         } else {
             printf("\nError: Failed to save your updated details.\n");
-            // NOTE: In a real app, you would need to restore the old data here.
         }
     }
 }

@@ -55,9 +55,9 @@ int find_account(Account *acc, int account_number) {
     while (fread(acc, sizeof(Account), 1, file) == 1) {
         if (acc->account_number == account_number) {
             fclose(file);
-            return 1; // Found it!
+            return 1;
         }
     }
     fclose(file);
-    return 0; // Reached end of file, not found
+    return 0;
 }

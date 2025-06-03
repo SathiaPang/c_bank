@@ -43,6 +43,7 @@ int main(void) {
             case 0:
                 printf("\nThank you for using CLI Banking Management System!\n");
                 printf("Goodbye!\n");
+                printf("Thank you for using CLI Banking Managemetn System by Alex Satya\n");
                 break;
             default:
                 printf("\nInvalid choice! Please try again.\n");
