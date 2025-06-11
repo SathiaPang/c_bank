@@ -5,9 +5,9 @@
 #include "menu/menu.h"
 #include "views/view.h"
 #include "auth/auth.h"
+#include "utils/utils.h"
 
-
-// Placement of delcaraing functions is here.
+// Function Delcarartions
 void run_admin_session(void);
 
 void run_user_session(void);
@@ -21,7 +21,9 @@ int main(void) {
         // Admin password for login
         int admin_pass = 1234;
         int get_admin_pass;
+
         show_login_menu();
+
         choice = get_choice();
         switch (choice) {
             case 1:
@@ -43,7 +45,7 @@ int main(void) {
             case 0:
                 printf("\nThank you for using CLI Banking Management System!\n");
                 printf("Goodbye!\n");
-                printf("Thank you for using CLI Banking Managemetn System by Alex Satya\n");
+                printf("Thank you for using CLI Banking Management System by Alex Satya\n");
                 break;
             default:
                 printf("\nInvalid choice! Please try again.\n");
@@ -61,34 +63,51 @@ void run_admin_session(void) {
         switch (admin_choice) {
             case 1:
                 create_account();
+                press_enter_to_continue();
                 break;
             case 2:
                 // Deposit funds
                 deposit_funds();
+                press_enter_to_continue();
                 break;
             case 3:
                 // Withdraw funds
                 withdraw_funds();
+                press_enter_to_continue();
                 break;
             case 4:
                 // Transfer funds
                 transfer_funds();
+                press_enter_to_continue();
                 break;
             case 5:
                 // search and View account
                 display_and_search_accounts();
+                press_enter_to_continue();
                 break;
             case 6:
                 // Update Account Info
                 update_account();
+                press_enter_to_continue();
                 break;
             case 7:
                 // Close Account
                 close_account();
+                press_enter_to_continue();
                 break;
             case 8:
                 // View all accounts;
                 view_all_accounts();
+                press_enter_to_continue();
+                break;
+            case 9:
+                // View all login history
+                view_all_login_history();
+                press_enter_to_continue();
+                break;
+            case 10:
+                view_all_transaction_history();
+                press_enter_to_continue();
                 break;
             case 0:
                 printf("\nLogging out of Admin Dashboard.......\n");
@@ -109,19 +128,31 @@ void run_user_session(void) {
         switch (user_choice) {
             case 1:
                 user_deposit();
+                press_enter_to_continue();
                 break;
             case 2:
                 user_withdraw();
+                press_enter_to_continue();
                 break;
             case 3:
                 user_transfer();
+                press_enter_to_continue();
                 break;
             case 4: // "View My Account"
                 view_my_account();
+                press_enter_to_continue();
                 break;
             case 5:
                 user_update_account();
+                press_enter_to_continue();
                 break;
+            case 6:
+                view_my_login_history(g_current_user.account_number);
+                press_enter_to_continue();
+                break;
+            case 7:
+            // view_my_transaction_history(g_current_user.account_number);
+            // press_enter_to_continue();
             case 0:
                 user_logout();
                 break;

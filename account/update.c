@@ -26,7 +26,6 @@ void update_account(void) {
             printf("\nError: Incorrect PIN. Update failed.\n");
             return;
         }
-
         int choice;
         printf("\nPIN Accepted. What do you want to update?\n");
         printf("1. First Name\n");

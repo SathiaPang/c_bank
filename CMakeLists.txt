@@ -18,4 +18,8 @@ add_executable(c_bank main.c
         account/delete.c
         auth/auth.c
         auth/auth.h
-        account/user_account.c)
+        account/user_account.c
+        logger/logger.c
+        logger/logger.h
+        utils/utils.c
+        utils/utils.h)

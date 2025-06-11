@@ -28,6 +28,8 @@ void show_user_menu(void) {
     printf("\t\t3. Transfer Funds\n");
     printf("\t\t4. View My Account\n");
     printf("\t\t5. Update My Account\n");
+    printf("\t\t6. View My Login History\n");
+    printf("\t\t7. View My Transaction History\n");
     printf("\t\t0. Logout\n");
     printf("\t=========================================\n");
     printf("Select an option: ");
@@ -46,6 +48,8 @@ void show_admin_menu(void) {
     printf("\t\t6. Update Account\n");
     printf("\t\t7. Close Account\n");
     printf("\t\t8. View All Accounts\n");
+    printf("\t\t9. View All Login History\n");
+    printf("\t\t10. View All Transaction History\n");
     printf("\t\t0. Logout\n");
     printf("\t=========================================\n");
     printf("Select an option: ");

@@ -7,7 +7,11 @@
 
 #include "../account/account.h"
 
+// Declaration of file
 #define acc_data_file "accounts.dat"
+#define login_history_file "login_history.log"
+#define transaction_log_file "transaction.log"
+
 
 // Function to get the next account number
 int get_next_account_number();
@@ -20,5 +24,4 @@ int find_account(Account *acc, int account_number);
 
 
 #endif //FILEIO_H
-
 

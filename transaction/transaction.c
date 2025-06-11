@@ -8,6 +8,8 @@
 #include "transaction.h"
 #include "../data/fileio.h"
 #include "../auth/auth.h"
+#include "../logger/logger.h"
+#include "../utils/utils.h"
 
 /**Admin side functions*/
 void deposit_funds(void) {
@@ -126,8 +128,8 @@ void transfer_funds(void) {
 
     if (save_account(&source_acc) && save_account(&dest_acc)) {
         printf("\nSuccess! Transfer of $%.2f complete.\n", amount);
-        printf("New balance for account %d is $%.2f\n", source_acc.account_number,
-               source_acc.balance);
+        printf("New balance for account %d is $%.2f\n", source_acc.account_number, source_acc.balance);
+        press_enter_to_continue();
     } else {
         printf("\nCRITICAL ERROR: Failed to save transaction. Please check data file.\n");
         // In a real system, you would have a recovery mechanism here.
@@ -155,6 +157,8 @@ void user_deposit(void) {
     if (save_account(&g_current_user)) {
         printf("\nSuccess! Deposit of $%.2f was successful.\n", amount);
         printf("Your new balance is: $%.2f\n", g_current_user.balance);
+        logging_transaction("DEPOSIT", g_current_user.account_number, 0, amount);
+        press_enter_to_continue();
     } else {
         printf("\nError: Could not process your deposit. Please try again.\n");
         g_current_user.balance -= amount;
@@ -195,6 +199,8 @@ void user_withdraw(void) {
     if (save_account(&g_current_user)) {
         printf("Success! Withdrawal of $%.2f was successful.\n", amount);
         printf("Your new balance is: $%.2f\n", g_current_user.balance);
+        logging_transaction("WITHDRAWAL", g_current_user.account_number, 0, amount);
+        press_enter_to_continue();
     } else {
         printf("\nError: Could not process your withdrawal. Please try again.\n");
         // Revert the change if saving fails
@@ -248,6 +254,8 @@ void user_transfer(void) {
     if (save_account(&g_current_user) && save_account(&dest_acc)) {
         printf("\nSuccess! Transfer of $%.2f to account %d was complete.\n", amount, dest_num);
         printf("Your new balance is: $%.2f\n", g_current_user.balance);
+        logging_transaction("TRANSFER", g_current_user.account_number, dest_num, amount);
+        press_enter_to_continue();
     } else {
         printf("\nCRITICAL ERROR: Failed to save transaction. Please check data file.\n");
         // Revert the change in memory to keep the session consistent
